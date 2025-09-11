@@ -5,13 +5,19 @@
   "scripts": {
     "master": "node master/server.js",
     "slave": "node slave/server.js",
-    "start": "npm run master"
+    "start": "npm run master",
+    "dev": "nodemon --legacy-watch master/server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@prisma/client": "^6.16.1",
     "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10",
+    "prisma": "^6.16.1"
   }
 }
