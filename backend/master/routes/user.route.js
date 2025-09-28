@@ -1,8 +1,7 @@
-import express from 'express';
-const router = express.Router();
-
-router.get('/test', (req, res) => {
-  res.send('Admin route works');
-});
-
-export default router;
+import { Router } from "express";
+import { UserLogin, UserRegister, UserProfile } from "../controllers/user.controller.js";
+import { userMiddleware } from "../middleware/user.middleware.js";
+export const userRouter = Router();
+userRouter.post("/user/login", UserLogin)
+userRouter.post("/user/register", UserRegister)
+userRouter.get("/user/profile", userMiddleware, UserProfile)

@@ -1,13 +1,11 @@
 import express from 'express';
 import cors from 'cors';
-import userRouter from './routes/user.route.js';
-import adminRouter from './routes/admin.route.js';
-import questionRouter from './routes/question.route.js';
-import submissionRouter from './routes/submission.route.js';
-import testCaseRouter from './routes/testcase.route.js';
-import dotenv from 'dotenv';
-
-dotenv.config(); // Load env variables from .env
+import {userRouter} from './routes/user.route.js';
+import {adminRouter} from './routes/admin.route.js';
+import {questionRouter} from './routes/question.route.js';
+import {submissionRouter} from './routes/submission.route.js';
+import {testCaseRouter} from './routes/testcase.route.js';
+import 'dotenv/config';
 
 const app = express();
 
