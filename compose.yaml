@@ -9,6 +9,18 @@ services:
       - 4000:4000
     environment:
       - DATABASE_URL=postgresql://postgres:postgres@db:5432/postgres?schema=public
+    # always change the .env db connection instead of connecting to local host directly connect to container
+
+  redis:
+    image: redis:7.2-alpine
+    container_name: redis
+    ports:
+      - "6379:6379"
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - redisdata:/data
+    # instead of connecting to local host directly connect to redis container
+
   db:
     container_name: db
     image: postgres:17
@@ -24,3 +36,4 @@ services:
 
 volumes:
   pgdata: {}
+  redisdata: {}

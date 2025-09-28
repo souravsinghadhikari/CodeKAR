@@ -5,9 +5,12 @@ import {adminRouter} from './routes/admin.route.js';
 import {questionRouter} from './routes/question.route.js';
 import {submissionRouter} from './routes/submission.route.js';
 import {testCaseRouter} from './routes/testcase.route.js';
+import { createClient } from "redis"
 import 'dotenv/config';
 
 const app = express();
+const redisClient = createClient()
+redisClient.connect()
 
 // Middleware
 app.use(cors({}));  // will fix it during production
@@ -52,3 +55,4 @@ app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
 
+export { redisClient }

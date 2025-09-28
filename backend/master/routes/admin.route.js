@@ -1,9 +1,5 @@
-import express from 'express';
-const adminRouter = express.Router();
-
-adminRouter.get('/test', (req, res) => {
-  res.send('Admin route works');
-});
-
-export {adminRouter}
- 
+import { Router } from "express";
+import { AdminLogin, Adminregister } from "../controllers/admin.controller.js";
+export const adminRouter = Router();
+adminRouter.post("/admin/login", AdminLogin)
+adminRouter.post("/admin/register", Adminregister)
