@@ -9,7 +9,7 @@ export const addQuestionValidator = z.object({
     difficulty: z.enum(["easy", "medium", "hard"])
 });
 export const updateQuestionValidator = z.object({
-    questionId: z.string().uuid(),
+    questionId: z.uuid(),
     question: z.string().min(10),
     description: z.string(),
     sampleInput1: z.string(),
@@ -18,8 +18,8 @@ export const updateQuestionValidator = z.object({
     sampleOutput2: z.string()
 });
 export const deleteQuestionValidator = z.object({
-    questionId: z.string().uuid(),
+    questionId: z.uuid(),
 });
 export const getQuestionValidator = z.object({
-    questionId: z.string().uuid(),
+    questionId: z.uuid(),
 });

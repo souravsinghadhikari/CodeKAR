@@ -39,10 +39,10 @@ export async function AddQuestion(req, res) {
 
 }
 export async function GetQuestions(req, res) {
+    console.log("get all");
     try {
         const question = await redisClient.get("questions");
         if (question) {
-            console.log("from redis")
             res.status(200).json({
                 success: true,
                 message: "Questions fetched successfully",
@@ -50,7 +50,6 @@ export async function GetQuestions(req, res) {
             });
             return
         }
-        console.log("from db")
         const questions = await prisma.questions.findMany();
         redisClient.set("questions", JSON.stringify(questions))
         res.status(200).json({
@@ -78,8 +77,9 @@ export async function GetSpcificQuestion(req, res) {
             });
             return
         }
-        const questions = await redisClient.get(`question:${id}`)
-        console.log("we got" + question);
+
+        const questions = await redisClient.get(`question:${id}`);
+
         if (questions) {
             console.log("from redis")
             res.status(200).json({
@@ -89,7 +89,7 @@ export async function GetSpcificQuestion(req, res) {
             });
             return
         }
-        console.log("from db")
+        
         const question = await prisma.questions.findUnique({
             where: {
                 id: id

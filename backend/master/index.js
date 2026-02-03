@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
 
 // API Routes
 app.use('/api/v1/users', userRouter);
-app.use('/api/v1/admin', adminRouter);
+app.use('/api/v1/admins', adminRouter);
 app.use('/api/v1/questions', questionRouter);
 app.use('/api/v1/submissions', submissionRouter);
 app.use('/api/v1/testcases', testCaseRouter);

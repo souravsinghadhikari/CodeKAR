@@ -16,3 +16,4 @@ coverage/
 .nuxt
 dist/
 .serverless/
+dummydata.txt
