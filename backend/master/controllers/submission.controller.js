@@ -73,7 +73,7 @@ export async function AddSubmission(req, res) {
             userId: submission.userId,
             submissionId: submission.id,
             code: check.data.code,
-            langId: 63,
+            language: check.data.language,
             testcases
         }))
         res.status(200).json({
@@ -90,7 +90,6 @@ export async function AddSubmission(req, res) {
         });
         return
     }
-
 }
 export async function GetSubmission(req, res) {
     try {

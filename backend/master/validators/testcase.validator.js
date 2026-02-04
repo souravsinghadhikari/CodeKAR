@@ -1,6 +1,6 @@
 import z from 'zod';
 export const addTestCaseValidator = z.object({
-    input: z.any(),
+    input: z.string(),
     output: z.string(),
     questionId: z.uuid()
 });
