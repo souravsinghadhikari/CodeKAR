@@ -15,7 +15,7 @@ export async function userMiddleware(req, res, next) {
       return res.status(401).json({ success: false, message: "Invalid token" });
     }
 
-    req.body.id = decoded.id;
+    req.user = decoded;
     next();
 
   } catch (error) {

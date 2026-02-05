@@ -1,0 +1,25 @@
+.react-calendar-heatmap.color-empty {
+    background-color: #000000; /* No activity or no data */
+  }
+  
+  .react-calendar-heatmap .color-scale-0 {
+    background-color: #f0f0f0; /* Light color for no data or low count */
+  }
+  
+  .react-calendar-heatmap .color-scale-1 {
+    background-color: #d1e7f1; /* Light blue for a small count */
+  }
+  
+  .react-calendar-heatmap .color-scale-2 {
+    background-color: #a3c8f5; /* Medium blue */
+  }
+  
+  .react-calendar-heatmap .color-scale-3 {
+    background-color: #72a9f6; /* Darker blue */
+  }
+  
+  /* Continue for other scale values as needed */
+  .react-calendar-heatmap .color-scale-5 {
+    background-color: #3575e5; /* Deep blue for higher count */
+  }
+  
