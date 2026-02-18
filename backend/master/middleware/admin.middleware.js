@@ -24,7 +24,8 @@ export async function adminMiddleware(req, res, next) {
             });
             return
         }
-        req.body.id = admin.id;
+        //req.body.id = admin.id;
+        req.admin = admin;
         next();
     } catch (error) {
         res.status(500).json({

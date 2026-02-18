@@ -14,7 +14,7 @@ export async function GetAllSubmissions(req, res) {
         }
         const submissions = await prisma.submissions.findMany({
             where: {
-                userId: req.body.id,
+                userId: req.user.id,
                 questionId: id.toString(),
                 completed: true
             },
@@ -53,7 +53,7 @@ export async function AddSubmission(req, res) {
                 code: check.data.code,
                 language: check.data.language,
                 questionId: check.data.questionId,
-                userId: req.body.id
+                userId: req.user.id
             }
         })
         const testcases = await prisma.testcases.findMany({
@@ -61,13 +61,13 @@ export async function AddSubmission(req, res) {
                 questionId: check.data.questionId
             }
         })
-        let result = {
-            passedCases: 0,
-            failedCases: 0,
-            totalCases: testcases.length,
-            correct: false,
-            userId: submission.userId
-        };
+        // let result = {
+        //     passedCases: 0,
+        //     failedCases: 0,
+        //     totalCases: testcases.length,
+        //     correct: false,
+        //     userId: submission.userId
+        // };
 
         redisClient.lPush("submissions", JSON.stringify({
             userId: submission.userId,
@@ -130,9 +130,9 @@ export async function GetSubmission(req, res) {
 }
 export async function UpdateSubmission(req, res) {
     try {
+        const submissionId = req.params.id;  // from URL
         const body = req.body;
-        const id = req.params.id;
-        if (!id) {
+        if (!submissionId) {
             res.status(400).json({
                 success: false,
                 message: "id required"
@@ -149,7 +149,7 @@ export async function UpdateSubmission(req, res) {
         }
         const submission = await prisma.submissions.findUnique({
             where: {
-                id: id
+                id: submissionId
             }
         })
         if (!submission) {
@@ -169,7 +169,7 @@ export async function UpdateSubmission(req, res) {
         }
         await prisma.submissions.update({
             where: {
-                id: id
+                id: submissionId
             },
             data: {
                 failedcases: check.data.failedcases,

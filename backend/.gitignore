@@ -17,3 +17,4 @@ coverage/
 dist/
 .serverless/
 dummydata.txt
+temp

@@ -1,6 +1,7 @@
 import { addQuestionValidator, updateQuestionValidator } from '../validators/question.validator.js';
 import {prisma} from '../db.js';
 import { redisClient } from '../index.js';
+
 export async function AddQuestion(req, res) {
     try {
         const body = req.body;
