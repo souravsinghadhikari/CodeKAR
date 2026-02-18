@@ -90,7 +90,6 @@ async function slave() {
 
                 // Update the main backend
                 try {
-                    console.log(result);
                     await axios.put(`http://localhost:4000/api/v1/submissions/submission/${receivedBody.submissionId}`, {
                         passedcases: result.passedCases,
                         failedcases: result.failedCases,
